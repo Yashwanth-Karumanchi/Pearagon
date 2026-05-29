@@ -1,10 +1,10 @@
 // TODO:
-// [ ] Add formatted API result output
+// [x] Add formatted API result output
 // [ ] Add user-facing error formatting
 // [ ] Add cache status formatting
 // [x] Format scaffold startup output
 
-import type { SetupMessageGroup } from "./types";
+import type { BookSummary, SetupMessageGroup } from "./types";
 
 export function formatStartupMessage(
   appName: string,
@@ -13,7 +13,29 @@ export function formatStartupMessage(
   return [
     appName,
     ...messages.verified,
+  ].join("\n");
+}
+
+export function formatBookSummary(
+  book: BookSummary | null,
+  searchedTitle: string,
+): string {
+  if (!book) {
+    return `No book found for "${searchedTitle}".`;
+  }
+
+  // Always show at least one author line so the terminal output stays complete.
+  const authorLines =
+    book.authors.length > 0 ? book.authors : ["Unknown author"];
+
+  // Keep the result easy to scan in a plain terminal session.
+  return [
+    `Book found for "${searchedTitle}"`,
     "",
-    ...messages.pending,
+    `Title: ${book.title}`,
+    `ID: ${book.id}`,
+    `Description: ${book.description}`,
+    "Authors:",
+    ...authorLines.map((authorName) => `- ${authorName}`),
   ].join("\n");
 }
