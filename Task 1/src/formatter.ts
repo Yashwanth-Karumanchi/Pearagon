@@ -1,19 +1,10 @@
-// TODO:
-// [x] Add formatted API result output
-// [ ] Add user-facing error formatting
-// [ ] Add cache status formatting
-// [x] Format scaffold startup output
-
 import type { BookSummary, SetupMessageGroup } from "./types";
 
 export function formatStartupMessage(
   appName: string,
   messages: SetupMessageGroup,
 ): string {
-  return [
-    appName,
-    ...messages.verified,
-  ].join("\n");
+  return [appName, ...messages.verified].join("\n");
 }
 
 export function formatBookSummary(
@@ -25,8 +16,7 @@ export function formatBookSummary(
   }
 
   // Always show at least one author line so the terminal output stays complete.
-  const authorLines =
-    book.authors.length > 0 ? book.authors : ["Unknown author"];
+  const authorNames = book.authors.length > 0 ? book.authors : ["Unknown author"];
 
   // Keep the result easy to scan in a plain terminal session.
   return [
@@ -36,6 +26,6 @@ export function formatBookSummary(
     `ID: ${book.id}`,
     `Description: ${book.description}`,
     "Authors:",
-    ...authorLines.map((authorName) => `- ${authorName}`),
+    ...authorNames.map((authorName) => `- ${authorName}`),
   ].join("\n");
 }
