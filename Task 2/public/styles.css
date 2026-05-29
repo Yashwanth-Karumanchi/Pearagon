@@ -1,0 +1,63 @@
+/* TODO:
+   [x] Add base page styling
+   [x] Add layout styling for the setup screen
+   [ ] Add styles for count controls
+   [ ] Add styles for request states
+*/
+
+:root {
+  color-scheme: light;
+  --page-background: #ffffff;
+  --panel-background: #ffffff;
+  --panel-border: #000000;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Times New Roman", Times, serif;
+  background: var(--page-background);
+  color: var(--text-primary);
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+}
+
+.panel {
+  width: min(560px, 100%);
+  padding: 40px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel-background);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 0.95;
+}
+
+.description {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
