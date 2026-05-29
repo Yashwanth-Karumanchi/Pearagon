@@ -31,6 +31,7 @@ app.get("/count", (_request, response) => {
 app.post("/increment", (request, response) => {
   const requestBody = request.body as { value?: unknown };
   const incrementBy = requestBody.value;
+  const maxIncrementBy = Number.MAX_SAFE_INTEGER - currentCount;
 
   if (typeof incrementBy !== "number") {
     response.status(400).json({
@@ -46,9 +47,30 @@ app.post("/increment", (request, response) => {
     return;
   }
 
+  if (incrementBy <= 0) {
+    response.status(400).json({
+      error: "The increment value must be greater than 0.",
+    });
+    return;
+  }
+
+  if (maxIncrementBy <= 0) {
+    response.status(400).json({
+      error: "The maximum count has been reached. No increment is possible.",
+    });
+    return;
+  }
+
   if (!Number.isSafeInteger(incrementBy)) {
     response.status(400).json({
-      error: "The increment value must be a safe integer.",
+      error: `The increment value must be a whole number between 1 and ${maxIncrementBy}.`,
+    });
+    return;
+  }
+
+  if (incrementBy > maxIncrementBy) {
+    response.status(400).json({
+      error: `The increment value must be between 1 and ${maxIncrementBy} for the current count.`,
     });
     return;
   }

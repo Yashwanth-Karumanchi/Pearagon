@@ -1,8 +1,8 @@
 /* TODO:
    [x] Add base page styling
    [x] Add layout styling for the setup screen
-   [ ] Add styles for count controls
-   [ ] Add styles for request states
+   [x] Add styles for count controls
+   [x] Add styles for request states
 */
 
 :root {
@@ -56,8 +56,68 @@ h1 {
 }
 
 .description {
-  margin: 0;
+  margin: 0 0 20px;
   font-size: 1.05rem;
   line-height: 1.65;
   color: var(--text-secondary);
+}
+
+.count-group {
+  margin-bottom: 20px;
+}
+
+.count-label {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.count-value {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 700;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid var(--panel-border);
+  background: #ffffff;
+  color: var(--text-primary);
+}
+
+button {
+  padding: 8px 12px;
+  border: 1px solid var(--panel-border);
+  background: #ffffff;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+button:hover,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.error-message {
+  min-height: 20px;
+  margin: 12px 0 0;
 }
