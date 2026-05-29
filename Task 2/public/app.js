@@ -1,8 +1,3 @@
-// TODO:
-// [x] Wire frontend script loading
-// [x] Add button click behavior
-// [x] Connect browser requests to count routes
-
 const countDisplay = document.getElementById("countDisplay");
 const multiplierInput = document.getElementById("multiplierInput");
 const incrementButton = document.getElementById("incrementButton");
@@ -35,6 +30,7 @@ function setErrorMessage(message) {
   errorMessage.textContent = message;
 }
 
+// Parse API responses once so both buttons share the same success and error handling.
 async function readJsonResponse(response) {
   const responseBody = await response.json().catch(() => null);
 
@@ -96,6 +92,7 @@ incrementButton.addEventListener("click", async () => {
   await updateCountBy(1);
 });
 
+// Multiply by converting the result into a single increment request.
 multiplyButton.addEventListener("click", async () => {
   const multiplier = Number(multiplierInput.value);
 

@@ -1,10 +1,3 @@
-// TODO:
-// [x] Create Express server setup
-// [x] Serve static frontend files
-// [x] Serve the root page
-// [x] Add count routes
-// [x] Add request validation for count updates
-
 import path from "node:path";
 
 import express from "express";
@@ -75,6 +68,7 @@ app.post("/increment", (request, response) => {
     return;
   }
 
+  // Keep the count on the server so the same value survives page refreshes.
   currentCount += incrementBy;
 
   response.json({ count: currentCount });
