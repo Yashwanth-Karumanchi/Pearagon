@@ -7,11 +7,15 @@
 
 :root {
   color-scheme: light;
-  --page-background: #ffffff;
-  --panel-background: #ffffff;
-  --panel-border: #000000;
-  --text-primary: #000000;
-  --text-secondary: #000000;
+  --page-background: #f5f1ea;
+  --panel-background: #fffdf9;
+  --panel-border: #d8cec2;
+  --text-primary: #1f1a17;
+  --text-secondary: #5b534d;
+  --accent: #6f4e37;
+  --button-background: #f3e8dc;
+  --button-hover: #ead9c7;
+  --error: #9f2d2d;
 }
 
 * {
@@ -37,7 +41,9 @@ body {
   width: min(560px, 100%);
   padding: 40px;
   border: 1px solid var(--panel-border);
+  border-radius: 18px;
   background: var(--panel-background);
+  box-shadow: 0 10px 24px rgba(31, 26, 23, 0.08);
 }
 
 .eyebrow {
@@ -46,7 +52,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-primary);
+  color: var(--accent);
 }
 
 h1 {
@@ -75,6 +81,12 @@ h1 {
   margin: 0;
   font-size: 2rem;
   font-weight: 700;
+  color: var(--text-primary);
+  transition: color 160ms ease;
+}
+
+.count-value.is-increasing {
+  color: #2f6b3c;
 }
 
 .controls {
@@ -98,6 +110,7 @@ button {
 input {
   padding: 8px;
   border: 1px solid var(--panel-border);
+  border-radius: 10px;
   background: #ffffff;
   color: var(--text-primary);
 }
@@ -105,19 +118,25 @@ input {
 button {
   padding: 8px 12px;
   border: 1px solid var(--panel-border);
-  background: #ffffff;
+  border-radius: 10px;
+  background: var(--button-background);
   color: var(--text-primary);
   cursor: pointer;
+  transition: background-color 120ms ease;
 }
 
-button:hover,
+button:hover {
+  background: var(--button-hover);
+}
+
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid #000000;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 .error-message {
   min-height: 20px;
   margin: 12px 0 0;
+  color: var(--error);
 }

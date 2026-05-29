@@ -10,10 +10,6 @@ Task 2 is a TypeScript Express server that serves a small vanilla frontend from 
 
 `npm start`
 
-## Development
-
-`npm run dev`
-
 ## Current backend
 
 The server compiles TypeScript into `dist/`, serves static files from `public/`, returns `index.html` at `/`, and keeps an in-memory count that starts at `0`.

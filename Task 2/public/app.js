@@ -10,11 +10,25 @@ const multiplyButton = document.getElementById("multiplyButton");
 const errorMessage = document.getElementById("errorMessage");
 
 let currentCount = 0;
+let increaseHighlightTimeoutId;
 
 function renderCount(nextCount) {
+  const didIncrease = nextCount > currentCount;
+
   currentCount = nextCount;
   countDisplay.hidden = false;
   countDisplay.textContent = String(nextCount);
+
+  if (!didIncrease) {
+    countDisplay.classList.remove("is-increasing");
+    return;
+  }
+
+  countDisplay.classList.add("is-increasing");
+  window.clearTimeout(increaseHighlightTimeoutId);
+  increaseHighlightTimeoutId = window.setTimeout(() => {
+    countDisplay.classList.remove("is-increasing");
+  }, 400);
 }
 
 function setErrorMessage(message) {
